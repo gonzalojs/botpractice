@@ -4,4 +4,6 @@ const reddit = require('./reddit');
 
   await reddit.initialize('node')
 
+  let results = await reddit.getResults(10)
+
 })()

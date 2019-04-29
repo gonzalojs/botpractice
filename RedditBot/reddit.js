@@ -14,6 +14,10 @@ const self = {
 
     //Go to the subreddit
     await self.page.goto(SUBREDDIT_URL(reddit), { waitUntil: 'networkidle0' })
+  },
+
+  getResults: async (nr) => {
+    
   }
 }
 
