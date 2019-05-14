@@ -34,36 +34,21 @@ async function get_tweets(q, count) {
 }
 
 async function main() {
-    let keyword = '@liamariejohnson';
+    let keyword = 'binding of isaac';
     let count = 100;
     let tweets = await get_tweets(keyword, count);
     for (tweet of tweets) {
-        let score = sentiment.analyze(tweet).comparative;
+        let score = sentiment.analyze(tweet);
         tweet = `${tweet}\n`;
-        if (score > 0) {
+        if (score.score > 0) {
             tweet = colors.green(tweet);
-        } else if (score < 0) {
+        } else if (score.score < 0) {
             tweet = colors.red(tweet);
         } else {
             tweet = colors.blue(tweet)
         }
-        console.log(tweet)
+        console.log(tweet, score.score)
     }
-
-/*     for (let i = 0; i < tweets.length; i++) {
-      let score = sentiment(tweets[i]).comparative
-
-      if (score > 0) {
-        tweets[i] = colors.green(tweet);
-    } else if (score < 0) {
-        tweets[i] = colors.red(tweet);
-    } else {
-        tweets[i] = colors.blue(tweet)
-    }
-    console.log(tweets[i])
-  } */
-
-/*   console.log(sentiment.analyze("i hate every dog in the planet")) */
 }
 
 main()
